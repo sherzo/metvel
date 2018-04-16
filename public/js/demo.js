@@ -130,19 +130,20 @@ demo = {
         marker.setMap(map);
     },
 
-	showNotification: function(from, align){
-    	color = Math.floor((Math.random() * 4) + 1);
+	showNotification: function(title, message, type){
+    	//color = Math.floor((Math.random() * 4) + 1);
+      var icon = 'ti-bell'
 
     	$.notify({
-        	icon: "ti-gift",
-        	message: "Welcome to <b>Paper Dashboard</b> - a beautiful freebie for every web developer."
+        	icon: icon,
+        	message: `<b>${title}</b> - ${message}.`
 
         },{
-            type: type[color],
-            timer: 4000,
+            type: type,
+            timer: 1000,
             placement: {
-                from: from,
-                align: align
+                from: 'top',
+                align: 'right'
             }
         });
 	},

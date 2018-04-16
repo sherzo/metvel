@@ -13,20 +13,18 @@
                 <div class="header">
                     <h4 class="title">Listado</h4>
                     <p class="category">Productos con sus categorías</p>
-                    <a href="{{ path('product_new') }}" class="pull-right btn btn-success ">Crear nuevo
+                    <a href="{{ route('products.create') }}" class="pull-right btn btn-success ">Crear nuevo
                         <i class="ti-pluss"></i>
                     </a>
 
                 </div>
-                <div class="content table-responsive table-full-width">
-                    <table class="table">
+                <div class="content table-responsive">
+                    <table class="table table-border">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
-                            <th>Descripcion</th>
                             <th>Precio</th>
-                            <!--<th>Imagen</th>-->
                             <th>Stock</th>
                             <th>Acciones</th>
                         </tr>
@@ -36,13 +34,20 @@
                         <tr>
                             <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->description }}</td>
                             <td>{{ $product->price }}</td>
                             <!--<td>{{ $product->image }}</td>-->
                             <td>{{ $product->stock }}</td>
                             <td>
-                                <a href="{{ url('products', $products->id) }}">Mostrar</a>
-                                <a href="{{ url('products', $products->id) }}">Editar</a>
+                                <a href="{{ route('products.show', $product->id) }}">   Mostrar
+                                </a>
+                                
+                                <a href="{{ route('products.edit', $product->id) }}">   Editar
+                                </a>
+                                
+
+                                <a href="{{ route('products.destroy', $product->id) }}">
+                                    Eliminar
+                                </a>
                             </td>
                         </tr>
                     @empty
@@ -56,4 +61,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    @include('components.messages')
 @endsection
