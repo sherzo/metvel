@@ -78,7 +78,7 @@
         	</nav>
 
 
-        	<div class="content">
+        	<div class="content" id="app">
 	            <div class="container-fluid">
 	               @yield('content') 
 	            </div>
@@ -125,7 +125,10 @@
 	<script src="{{ asset('js/paper-dashboard.js') }}"></script>
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('js/demo.js') }}"></script>
+    <script src="{{ asset('js/demo.js') }}"></script>
+
+    <!-- Vuejs -->
+    <script src="{{ asset('js/vue.js') }}"></script>
     @yield('js')
 </body>
 </html>

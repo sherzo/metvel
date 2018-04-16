@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' =>  'auth'], function() {
 
 	Route::resources([
-		'products' => 'ProductController'
+		'products' => 'ProductController',
+		'providers' => 'ProviderController'
 	]);
 
 });
