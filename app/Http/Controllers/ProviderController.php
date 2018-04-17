@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Provider;
+use App\Product;
 use App\State;
 
 class ProviderController extends Controller
@@ -27,11 +28,14 @@ class ProviderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    
     {
         $states = State::pluck('name', 'id');
+        $products = Product::pluck('name', 'id');
 
         return view('providers.create', [
             'states' => $states,
+            'products' => $products,
             'sidebarActive' => 4
         ]);
     }
@@ -46,6 +50,8 @@ class ProviderController extends Controller
     {
         $provivers = Provider::create($request->all());
 
+        $provivers->products()->attach($request->products);
+
         return redirect('providers')->with('success', 'Se creo el proveedor correctamente');
     }
 
@@ -57,8 +63,8 @@ class ProviderController extends Controller
      */
     public function show($id)
     {
-        return view('provivers.show', [ 
-            'proviver' => Provider::findOrFail($id),
+        return view('providers.show', [ 
+            'provider' => Provider::findOrFail($id),
             'sidebarActive' => 4
         ]);
     }
@@ -92,10 +98,11 @@ class ProviderController extends Controller
         $provider->name = $request->name;
         $provider->address = $request->address;
         $provider->phone = $request->phone;
-        $provider->parish_id = $request->parish_id;
         $provider->city_id = $request->city_id;
 
         $provider->save();
+
+        $provider->products()->sync($request->products);
 
         return redirect()->back()->with('success', 'Se actualizo el proveedor correctamente');
     }

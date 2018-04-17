@@ -31,7 +31,7 @@
             </a>
         </li>
         <li class="{{ $sidebarActive == 4 ? 'active' : '' }}">
-            <a href="{{ url('providres') }}">
+            <a href="{{ url('providers') }}">
                 <i class="ti-truck"></i>
                 <p>Proveedores</p>
             </a>

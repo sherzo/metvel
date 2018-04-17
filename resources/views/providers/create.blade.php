@@ -2,6 +2,10 @@
 
 @section('title', 'Proveedores')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/chosen.min.css') }}">
+@endsection
+
 @section('subtitle')
 	<a class="navbar-brand" href="{{ url('providers') }}">Proveedores</a>
 @endsection
@@ -36,4 +40,9 @@
 @section('js')
     @include('components/messages')
     <script src="{{ asset('js/src/locations.js') }}"></script>
+
+    <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+    <script>
+        $(".chosen-select").chosen({no_results_text: "No se encontraron resultados con: "})
+    </script>
 @endsection

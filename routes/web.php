@@ -26,4 +26,9 @@ Route::group(['middleware' =>  'auth'], function() {
 		'providers' => 'ProviderController'
 	]);
 
+	Route::group(['prefix' => 'api'], function() {
+		Route::get('states', 'StateController@get');
+		Route::get('get/{state_id}/cities-and-municipalities', 'StateController@getCitiesAndMunicipalities');
+		Route::get('parishes/{municipality_id}', 'MunicipalityController@getParish');
+	});
 });

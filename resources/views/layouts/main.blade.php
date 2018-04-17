@@ -129,6 +129,12 @@
 
     <!-- Vuejs -->
     <script src="{{ asset('js/vue.js') }}"></script>
+    
+    <!-- Axios -->
+    <script src="{{ asset('js/axios.js') }}"></script>
+
+    <!-- App -->
+    <script src="{{ asset('js/vue.js') }}"></script>
     @yield('js')
 </body>
 </html>
