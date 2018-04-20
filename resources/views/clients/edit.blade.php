@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Proveedores')
+@section('title', 'Clientes')
 
 @section('subtitle')
-	<a class="navbar-brand" href="{{ url('providers') }}">provideros</a>
+	<a class="navbar-brand" href="{{ url('clients') }}">Clientes</a>
 @endsection
 
 @section('content')
@@ -11,18 +11,18 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Editar proveedor</h4>
+                    <h4 class="title">Editar cliente</h4>
                     <p class="category">Ingrese los datos que desea editar</p>
-                    <a class="pull-right" href="{{ route('providers.index') }}" >Volver al listado
+                    <a class="pull-right" href="{{ route('clients.index') }}" >Volver al listado
                         <i class="ti-pluss"></i>
                     </a>
 
                 </div>
                 <div class="content">
 
-        			{{ Form::model($provider, ['route' => ['providers.update', $provider->id], 'method' => 'PUT']) }}
+        			{{ Form::model($client, ['route' => ['clients.update', $client->id], 'method' => 'PUT']) }}
 
-                        @include('providers.partials.fields')
+                        @include('clients.partials.fields')
 
                         <div class="form-group">
                         	<button class="btn">Actualizar</button>

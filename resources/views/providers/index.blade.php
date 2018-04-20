@@ -11,11 +11,17 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">Listado</h4>
-                    <p class="category">provideros con sus categorías</p>
-                    <a href="{{ route('providers.create') }}" class="pull-right btn btn-success ">Crear nuevo
-                        <i class="ti-pluss"></i>
+                    <p class="category">Todos los proveedores</p>
+                    
+                    <a href="{{ route('providers.create') }}" class="pull-right btn btn-success ">
+                        <i class="ti-plus"></i>
+                        Nuevo
                     </a>
-
+                    
+                    <a href="{{ route('providers.create') }}" class="pull-right btn btn-default" style="margin-right: 5px;">
+                        <i class="ti-shopping-cart"></i>
+                        Pedidos
+                    </a>
                 </div>
                 <div class="content table-responsive">
                     <table class="table table-border">
@@ -33,17 +39,17 @@
                             <td>{{ $provider->id }}</td>
                             <td>{{ $provider->dni }}</td>
                             <td>{{ $provider->name }}</td>
-                            <td>{{ $provider->stock }}</td>
                             <td>
-                                <a href="{{ route('providers.show', $provider->id) }}">   Mostrar
+                                <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-info btn-sm"> 
+                                    <i class="ti-eye"></i>
                                 </a>
                                 
-                                <a href="{{ route('providers.edit', $provider->id) }}">   Editar
+                                <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning btn-sm">                                 
+                                    <i class="ti-pencil"></i>
                                 </a>
                                 
-
-                                <a href="{{ route('providers.destroy', $provider->id) }}">
-                                    Eliminar
+                                <a href="{{ route('providers.destroy', $provider->id) }}" class="btn btn-danger btn-sm">
+                                    <i class="ti-close"></i>
                                 </a>
                             </td>
                         </tr>

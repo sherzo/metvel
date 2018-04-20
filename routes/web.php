@@ -23,7 +23,8 @@ Route::group(['middleware' =>  'auth'], function() {
 
 	Route::resources([
 		'products' => 'ProductController',
-		'providers' => 'ProviderController'
+		'providers' => 'ProviderController',
+		'clients' => 'ClientController'
 	]);
 
 	Route::group(['prefix' => 'api'], function() {

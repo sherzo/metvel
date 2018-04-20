@@ -12,10 +12,10 @@ new Vue({
       municipality_id: 0
     },
     municipalities: [],
-    city_id: 0,
-    state_id: 0,
-    parish_id: 0,
-    municipality_id: 0
+    city_id: '',
+    state_id: '',
+    parish_id: '',
+    municipality_id: ''
   },
   mounted () {
     axios.get(`${uri}/api/states`)
@@ -25,6 +25,7 @@ new Vue({
   },
   methods: {
     getCitiesAndMunicipalities () {
+      this.city_id = '';
       let state_id = this.state_id
 
       axios.get(`${uri}/api/get/${state_id}/cities-and-municipalities`)

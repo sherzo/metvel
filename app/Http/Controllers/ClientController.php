@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Provider;
-use App\Product;
+use App\Client;
 use App\State;
 
-class ProviderController extends Controller
+class ClientController extends Controller
 {
+   
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +16,9 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        return view('providers.index', [
-            'providers' => Provider::all(),
-            'sidebarActive' => 4
+        return view('clients.index', [
+            'clients' => Client::all(),
+            'sidebarActive' => 3
         ]);
     }
 
@@ -31,12 +31,10 @@ class ProviderController extends Controller
     
     {
         $states = State::pluck('name', 'id');
-        $products = Product::pluck('name', 'id');
 
-        return view('providers.create', [
+        return view('clients.create', [
             'states' => $states,
-            'products' => $products,
-            'sidebarActive' => 4
+            'sidebarActive' => 3
         ]);
     }
 
@@ -48,11 +46,9 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        $provivers = Provider::create($request->all());
+        $client = client::create($request->all());
 
-        $provivers->products()->attach($request->products);
-
-        return redirect('providers')->with('success', 'Se creo el proveedor correctamente');
+        return redirect('clients')->with('success', 'Se creo el cliente correctamente');
     }
 
     /**
@@ -63,9 +59,9 @@ class ProviderController extends Controller
      */
     public function show($id)
     {
-        return view('providers.show', [ 
-            'provider' => Provider::findOrFail($id),
-            'sidebarActive' => 4
+        return view('clients.show', [ 
+            'client' => client::findOrFail($id),
+            'sidebarActive' => 3
         ]);
     }
 
@@ -77,9 +73,9 @@ class ProviderController extends Controller
      */
     public function edit($id)
     {
-        return view('providers.edit', [
-            'provider' => Provider::find($id),
-            'sidebarActive' => 4
+        return view('clients.edit', [
+            'client' => Client::find($id),
+            'sidebarActive' => 3
         ]);
     }
 
@@ -92,22 +88,20 @@ class ProviderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $provider = Provider::findOrFail($id);
+        $client = Client::findOrFail($id);
 
-        $provider->dni = $request->dni;
-        $provider->name = $request->name;
-        $provider->address = $request->address;
-        $provider->phone = $request->phone;
+        $client->dni = $request->dni;
+        $client->name = $request->name;
+        $client->address = $request->address;
+        $client->phone = $request->phone;
 
         if($request->city_id) {
-            $provider->city_id = $request->city_id;
+            $client->city_id = $request->city_id;
         }
 
-        $provider->save();
+        $client->save();
 
-        $provider->products()->sync($request->products);
-
-        return redirect()->back()->with('success', 'Se actualizo el proveedor correctamente');
+        return redirect()->back()->with('success', 'Se actualizo el cliente correctamente');
     }
 
     /**
@@ -118,9 +112,9 @@ class ProviderController extends Controller
      */
     public function destroy($id)
     {
-        $provider = Provider::findOrFail($id);
-        $provider->delete();
+        $client = client::findOrFail($id);
+        $client->delete();
 
-        return redirect('providers');
+        return redirect('clients');
     }
 }

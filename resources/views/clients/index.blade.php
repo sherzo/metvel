@@ -1,9 +1,8 @@
 @extends('layouts.main')
-
-@section('title', 'Productos')
+@section('title', 'Clientes')
 
 @section('subtitle')
-	<a class="navbar-brand" href="{{ url('products') }}">Productos</a>
+	<a class="navbar-brand" href="{{ url('clients') }}">Clientes</a>
 @endsection
 
 @section('content')
@@ -12,11 +11,18 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">Listado</h4>
-                    <p class="category">Productos con sus categorías</p>
-                    <a href="{{ route('products.create') }}" class="pull-right btn btn-success ">
+                    <p class="category">Todos los clientes</p>
+                    &nbsp;
+                    <a href="{{ route('clients.create') }}" class="pull-right btn btn-success ">
                         <i class="ti-plus"></i>
                         Nuevo
                     </a>
+                    &nbsp;
+                    <a href="{{ route('clients.create') }}" style="margin-right: 5px;"  class="pull-right btn btn-info">
+                        <i class="ti-shopping-cart-full"></i>
+                        Despacho
+                    </a>&nbsp;
+
 
                 </div>
                 <div class="content table-responsive">
@@ -24,31 +30,31 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Precio</th>
-                            <th>Stock</th>
+                            <th>Cédula o Rif</th>
+                            <th>Razón social</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @forelse($products as $product)
+                    @forelse($clients as $client)
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <!--<td>{{ $product->image }}</td>-->
-                            <td>{{ $product->stock }}</td>
+                            <td>{{ $client->id }}</td>
+                            <td>{{ $client->dni }}</td>
+                            <td>{{ $client->name }}</td>
                             <td>
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm"> 
+                                <a href="{{ route('clients.show', $client->id) }}" class="btn btn-info btn-sm"> 
                                     <i class="ti-eye"></i>
                                 </a>
+
+                                <a href="{{ route('clients.show', $client->id) }}" class="btn btn-sm"> 
+                                    <i class="ti-truck"></i>
+                                </a>
                                 
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">                                 
+                                <a href="{{ route('clients.edit', $client->id) }}" class="btn btn-warning btn-sm">                                 
                                     <i class="ti-pencil"></i>
                                 </a>
                                 
-
-                                <a href="{{ route('products.destroy', $product->id) }}" class="btn btn-danger btn-sm">
+                                <a href="{{ route('clients.destroy', $client->id) }}" class="btn btn-danger btn-sm">
                                     <i class="ti-close"></i>
                                 </a>
                             </td>
