@@ -109,9 +109,9 @@
     <script src="{{ asset('js/jquery-1.10.2.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-	<!--  Checkbox, Radio & Switch Plugins -->
+	{{--  Checkbox, Radio & Switch Plugins 
 	<script src="{{ asset('js/bootstrap-checkbox-radio.js') }}"></script>
-
+    --}}
 	<!--  Charts Plugin -->
 	<script src="{{ asset('js/chartist.min.js') }}"></script>
 

@@ -24,7 +24,8 @@ Route::group(['middleware' =>  'auth'], function() {
 	Route::resources([
 		'products' => 'ProductController',
 		'providers' => 'ProviderController',
-		'clients' => 'ClientController'
+		'clients' => 'ClientController',
+		'dispatches' => 'DispatchController'
 	]);
 
 	Route::group(['prefix' => 'api'], function() {
