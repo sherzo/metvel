@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Provider;
+use App\Payment;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -13,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('orders.index', [
+            'orders' => Order::all(),
+            'sidebarActive' => 4
+        ]);
     }
 
     /**
@@ -21,9 +27,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $provider = Provider::findOrFail($request->provider_id);
+        $payments = Payment::pluck('name', 'id');
+
+        return view('orders.create', [
+            'provider' => $provider,
+            'payments' => $payments,
+            'sidebarActive' => 3
+        ]);
     }
 
     /**

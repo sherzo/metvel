@@ -6,7 +6,7 @@
 <div class="form-group">
     <label for="">Descripción</label>
 
-    {{ Form::textarea('description', null, ['class' => 'form-control border-input', 'required']) }}
+    {{ Form::textarea('description', null, ['class' => 'form-control border-input', 'required', 'rows' => '3']) }}
 </div>
 
 <div class="form-group">

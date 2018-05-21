@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Auth::routes();
@@ -25,12 +25,21 @@ Route::group(['middleware' =>  'auth'], function() {
 		'products' => 'ProductController',
 		'providers' => 'ProviderController',
 		'clients' => 'ClientController',
-		'dispatches' => 'DispatchController'
+		'dispatches' => 'DispatchController',
+		'orders' => 'OrderController'
 	]);
 
 	Route::group(['prefix' => 'api'], function() {
 		Route::get('states', 'StateController@get');
-		Route::get('get/{state_id}/cities-and-municipalities', 'StateController@getCitiesAndMunicipalities');
-		Route::get('parishes/{municipality_id}', 'MunicipalityController@getParish');
+		
+		Route::get('get/{state_id}/cities-and-municipalities', 
+			'StateController@getCitiesAndMunicipalities');
+
+		Route::get('parishes/{municipality_id}', 
+			'MunicipalityController@getParish');
+		
+		Route::get('{id}/client', 'ClientController@get');
+		Route::get('{id}/provider', 'ProviderController@get');
+		Route::get('products/get', 'ProductController@get');
 	});
 });

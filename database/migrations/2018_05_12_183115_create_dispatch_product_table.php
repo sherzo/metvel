@@ -14,7 +14,6 @@ class CreateDispatchProductTable extends Migration
     public function up()
     {
         Schema::create('dispatch_product', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('dispatch_id');
             $table->foreign('dispatch_id')
                 ->references('id')
@@ -30,7 +29,6 @@ class CreateDispatchProductTable extends Migration
             $table->index(['dispatch_id', 'product_id']);
             $table->unsignedInteger('quantity');
             $table->unsignedDecimal('amount', 14, 2);
-            $table->timestamps();
         });
     }
 

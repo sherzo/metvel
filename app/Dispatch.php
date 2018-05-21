@@ -12,7 +12,7 @@ class Dispatch extends Model
      * @var array
      */
     protected $fillable = [
-        'code', 'cliente_id', 'payment_id', 'shipping_id', 'city_id', 'address',
+        'code', 'client_id', 'payment_id', 'shipping_id', 'city_id', 'address',
         'status', 'subtotal', 'iva', 'total'
     ];
 
@@ -33,7 +33,7 @@ class Dispatch extends Model
 
     public function city()
     {
-    	return $this->belongsTo(Payment::class);
+    	return $this->belongsTo(City::class);
     }
 
     public function getCityNameAttribute() 
@@ -49,5 +49,10 @@ class Dispatch extends Model
     public function getLocationAttribute()
     {
         return $this->city_name . ' edo. ' . $this->state_name;
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class)->withPivot('amount', 'quantity');
     }
 }

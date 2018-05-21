@@ -104,4 +104,16 @@ class ProductController extends Controller
 
         return redirect('products');
     }
+
+    /**
+     * Show products with stock mayor 0.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get()
+    {
+        $products = Product::where('stock', '>', 0)->get();
+        
+        return $products;
+    }
 }

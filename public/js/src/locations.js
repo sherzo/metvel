@@ -1,6 +1,3 @@
-const uri = 'http://127.0.0.1:8000'
-
-
 new Vue({
   el: '#app',
   data: {
@@ -18,7 +15,7 @@ new Vue({
     municipality_id: ''
   },
   mounted () {
-    axios.get(`${uri}/api/states`)
+    axios.get(`api/states`)
       .then(res => {
         this.states = res.data
       })
@@ -28,7 +25,7 @@ new Vue({
       this.city_id = '';
       let state_id = this.state_id
 
-      axios.get(`${uri}/api/get/${state_id}/cities-and-municipalities`)
+      axios.get(`api/get/${state_id}/cities-and-municipalities`)
         .then(res => {
           this.cities = res.data.cities
           this.municipalities = res.data.municipalities

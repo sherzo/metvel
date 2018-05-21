@@ -13,11 +13,6 @@
                     <h4 class="title">Listado</h4>
                     <p class="category">Todos las ordenes de despacho</p>
                     &nbsp;
-                    <a href="{{ route('dispatches.create') }}" class="pull-right btn btn-success ">
-                        <i class="ti-plus"></i>
-                        Nuevo
-                    </a>
-                    &nbsp;
                     <a href="{{ route('clients.index') }}" style="margin-right: 5px;"  class="pull-right btn btn-info">
                         <i class="ti-user"></i>
                         Clientes
@@ -27,38 +22,36 @@
                 </div>
                 <div class="content table-responsive">
                     <table class="table table-border">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Código</th>
-                            <th>Cliente</th>
-                            <th>Total</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @forelse($dispatches as $dispatch)
-                        <tr>
-                            <td>{{ $dispatch->id }}</td>
-                            <td>{{ $dispatch->code }}</td>
-                            <td>{{ $dispatch->client->name }}</td>
-                            <td>{{ $dispatch->total }}</td>
-                            <td>
-                                <a href="{{ route('dispatches.show', $dispatch->id) }}" class="btn btn-info btn-sm"> 
-                                    <i class="ti-eye"></i>
-                                </a>
-                                
-                                <a href="{{ route('dispatches.destroy', $dispatch->id) }}" class="btn btn-danger btn-sm">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">No se encontraron resultados</td>
-                        </tr>
-                    @endforelse
-                    </tbody>
+                        <thead>
+                            <tr>
+                                <th>Nro.</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($dispatches as $dispatch)
+                                <tr>
+                                    <td>#00{{ $dispatch->id }}</td>
+                                    <td>{{ $dispatch->client->name }}</td>
+                                    <td>{{ $dispatch->total }}</td>
+                                    <td>
+                                        <a href="{{ route('dispatches.show', $dispatch->id) }}" class="btn btn-info btn-sm"> 
+                                            <i class="ti-eye"></i>
+                                        </a>
+                                        
+                                        <a href="{{ route('dispatches.destroy', $dispatch->id) }}" class="btn btn-danger btn-sm">
+                                            <i class="ti-close"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center">No se encontraron resultados</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
                     </table>
                 </div>
             </div>

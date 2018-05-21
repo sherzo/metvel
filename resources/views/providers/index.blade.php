@@ -43,6 +43,10 @@
                                 <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-info btn-sm"> 
                                     <i class="ti-eye"></i>
                                 </a>
+
+                                <a href="{{ route('orders.create', ['provider_id' => $provider->id]) }}" class="btn btn-sm"> 
+                                    <i class="ti-shopping-cart-full"></i>
+                                </a>
                                 
                                 <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning btn-sm">                                 
                                     <i class="ti-pencil"></i>

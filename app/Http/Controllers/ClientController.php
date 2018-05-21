@@ -117,4 +117,17 @@ class ClientController extends Controller
 
         return redirect('clients');
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($id)
+    {
+        $client = Client::find($id);
+        $client->load('city.state');
+        
+        return $client;
+    }
 }
