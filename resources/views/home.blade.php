@@ -8,20 +8,14 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-12">
         <div class="card">
             <div class="header">
                 <h4 class="title">Inicio</h4>
             </div>
 
             <div class="content">
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                You are logged in!
+                <h4>Bienvenido</h4>
             </div>
         </div>
     </div>

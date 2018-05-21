@@ -16,7 +16,7 @@
     <div class="tab-pane active" id="datos">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group" style="margin-top: 5px;">
+                <div class="form-group">
                     <label for="">Cédula o Rif</label>
                     <input type="hidden" value="{{ $client->id }}" name="client_id">
                     <input type="text" name="" value="{{ $client->dni }}" class="form-control border-input" readonly="">
@@ -105,7 +105,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="">Forma de pago</label>
-                    <select name="shipping_id" id="" class="form-control border-input">
+                    <select name="payment_id" id="" class="form-control border-input">
                         @forelse($payments as $id => $payment)
                             <option value="{{ $id }}">{{ $payment }}</option>
                         @empty
@@ -117,7 +117,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="" >Forma de envío</label>
-                    <select name="payment_id" id="" class="form-control border-input">
+                    <select name="shipping_id" id="" class="form-control border-input">
                         @forelse($shippings as $id => $shipping)
                             <option value="{{ $id }}">{{ $shipping }}</option>
                         @empty

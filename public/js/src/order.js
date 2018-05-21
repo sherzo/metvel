@@ -23,8 +23,8 @@ var order = new Vue({
         'danger'
       )
     },
-    getClientData (client_id) {
-      axios.get(`api/${client_id}/order-data`)
+    getProviderData (provider_id) {
+      axios.get(`api/${provider_id}/provider`)
         .then(res => {
           this.povider = res.data.provider
           this.products = res.data.products

@@ -18,7 +18,7 @@
                         Nuevo
                     </a>
                     
-                    <a href="{{ route('providers.create') }}" class="pull-right btn btn-default" style="margin-right: 5px;">
+                    <a href="{{ route('orders.index') }}" class="pull-right btn btn-default" style="margin-right: 5px;">
                         <i class="ti-shopping-cart"></i>
                         Pedidos
                     </a>

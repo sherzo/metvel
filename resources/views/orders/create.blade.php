@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
-@section('title', 'Orden de compra')
+@section('title', 'Pedidos')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/chosen.min.css') }}">
 @endsection
 
 @section('subtitle')
-	<a class="navbar-brand" href="{{ url('clients') }}">Orden de compra</a>
+	<a class="navbar-brand" href="{{ url('orders') }}">Pedidos</a>
 @endsection
 
 @section('content')
@@ -15,8 +15,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Nueva orden de compra</h4>
-                    <p class="category">Ingrese los datos para realizar la orden</p>
+                    <h4 class="title">Nuevo pedido</h4>
+                    <p class="category">Ingrese los datos para realizar el pedido</p>
                     <a class="pull-right" href="{{ route('providers.index') }}" >Volver al listado
                         <i class="ti-pluss"></i>
                     </a>
@@ -47,6 +47,6 @@
     @include('components/messages')
     <script src="{{ asset('js/src/order.js')}}"></script>    
     <script>
-        order.getClientData({{ $provider->id }})
+        order.getProviderData({{ $provider->id }})
     </script>
 @endsection

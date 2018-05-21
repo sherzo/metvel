@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Provider;
+use App\Product;
 use App\Payment;
 use App\Order;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -35,7 +36,7 @@ class OrderController extends Controller
         return view('orders.create', [
             'provider' => $provider,
             'payments' => $payments,
-            'sidebarActive' => 3
+            'sidebarActive' => 4
         ]);
     }
 
@@ -47,7 +48,34 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Order::create([
+            'code' => 0,
+            'provider_id' => $request->provider_id,
+            'payment_id' => $request->payment_id,
+            'total' => 0,
+        ]);
+
+        foreach ($request->product_id as $key => $product_id) { 
+            $product = Product::find($product_id);
+            $product->stock += $request->quantity[$key];
+            $product->save();
+        }
+
+        foreach ($request->product_id as $key => $product_id) {
+            $order->products()->attach($product_id, [
+                'amount' => $request->amount[$key],
+                'quantity' => $request->quantity[$key]
+            ]);
+            
+            $order->subtotal += $request->quantity[$key] * $request->amount[$key];
+        }
+
+        $order->iva = $order->subtotal * 0.12;
+        $order->total = $order->subtotal + $order->iva;
+
+        $order->save();
+
+        return redirect('/orders')->with('success', 'Se registro la order de compra correctamente');
     }
 
     /**
@@ -58,7 +86,15 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id); 
+
+        $date = new Carbon($order->create_at);
+        
+        return view('orders.show', [
+            'order' => $order,
+            'date' => $date,
+            'sidebarActive' => 4
+        ]);
     }
 
     /**

@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="">Cédula o Rif</label>
-            <input type="hidden" value="{{ $provider->id }}" name="client_id">
+            <input type="hidden" value="{{ $provider->id }}" name="provider_id">
             <input type="text" name="" value="{{ $provider->dni }}" class="form-control border-input" readonly="">
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="col-md-12">
         <div class="form-group">
             <label for="">Forma de pago</label>
-            <select name="shipping_id" id="" class="form-control border-input">
+            <select name="payment_id" id="" class="form-control border-input">
                 @forelse($payments as $id => $payment)
                     <option value="{{ $id }}">{{ $payment }}</option>
                 @empty

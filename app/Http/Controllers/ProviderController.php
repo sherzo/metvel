@@ -123,4 +123,23 @@ class ProviderController extends Controller
 
         return redirect('providers');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($id)
+    {
+        $provider = Provider::find($id);
+        $provider->load('city.state');
+
+        $products = $provider->products;
+
+        return [
+            'provider' => $provider,
+            'products' => $products
+        ];
+    }
 }

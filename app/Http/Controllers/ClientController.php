@@ -117,8 +117,9 @@ class ClientController extends Controller
 
         return redirect('clients');
     }
+   
     /**
-     * Remove the specified resource from storage.
+     * Get client data.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

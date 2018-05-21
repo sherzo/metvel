@@ -36,13 +36,5 @@
                 <p>Proveedores</p>
             </a>
         </li>
-       
-
-        <li class="{{ $sidebarActive == 5 ? 'active' : '' }}">
-            <a href="{{ url('sales') }}">
-                <i class="ti-shopping-cart"></i>
-                <p>Ordenes</p>
-            </a>
-        </li>
     </ul>
 </div>
