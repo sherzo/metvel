@@ -7,7 +7,7 @@
 @endsection
 
 @section('subtitle')
-	<a class="navbar-brand" href="{{ url('clients') }}">Clientes</a>
+	<a class="navbar-brand" href="{{ url('maintenance') }}">Usuarios</a>
 @endsection
 
 @section('content')
@@ -15,9 +15,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
-                    <h4 class="title">Crear nuevo cliente</h4>
-                    <p class="category">Ingrese los datos para registrar un cliente</p>
-                    <a class="pull-right" href="{{ route('clients.index') }}" >Volver al listado
+                    <h4 class="title">Crear nuevo usuario</h4>
+                    <p class="category">Ingrese los datos para registrar un usuarios</p>
+                    <a class="pull-right" href="{{ route('maintenance.index') }}" >Volver
                         <i class="ti-pluss"></i>
                     </a>
 
@@ -25,7 +25,7 @@
                 <div class="content">
                     {{ Form::open(['route' => 'users.store']) }}
 
-                        @include('clients.partials.fields')
+                        @include('maintenance.fields')
 
                         <div class="form-group">
                             <button class="btn">Guardar</button>
@@ -39,10 +39,4 @@
 
 @section('js')
     @include('components/messages')
-    <script src="{{ asset('js/src/locations.js') }}"></script>
-
-    <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
-    <script>
-        $(".chosen-select").chosen({no_results_text: "No se encontraron resultados con: "})
-    </script>
 @endsection

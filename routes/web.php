@@ -29,6 +29,18 @@ Route::group(['middleware' =>  'auth'], function() {
 		'orders' => 'OrderController'
 	]);
 
+	Route::get('maintenance', 'MaintenanceController@index')
+		->name('maintenance.index');
+
+	Route::get('maintenance/users/create', 'MaintenanceController@usersCreate')
+		->name('maintenance.user.create');
+	
+	Route::post('maintenance/users/store', 'MaintenanceController@usersStore')
+		->name('users.store');
+
+	Route::post('maintenance/shape/store', 'MaintenanceController@shapeStore')
+		->name('shape.store');
+
 	Route::group(['prefix' => 'api'], function() {
 		Route::get('states', 'StateController@get');
 		

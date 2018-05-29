@@ -36,5 +36,11 @@
                 <p>Proveedores</p>
             </a>
         </li>
+        <li class="{{ $sidebarActive == 5 ? 'active' : '' }}">
+            <a href="{{ url('maintenance') }}">
+                <i class="ti-settings"></i>
+                <p>Matenimiento</p>
+            </a>
+        </li>
     </ul>
 </div>
