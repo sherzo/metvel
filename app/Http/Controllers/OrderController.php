@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Payment;
+use App\Provider;
 use App\Order;
 use Carbon\Carbon;
 

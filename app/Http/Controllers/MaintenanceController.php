@@ -42,7 +42,7 @@ class MaintenanceController extends Controller
             'password' => Hash::make($password),
         ]);
 
-        $user->notify(new CreatedAccount($user, $password));
+        //$user->notify(new CreatedAccount($user, $password));
 
         return redirect('maintenance');
     }
